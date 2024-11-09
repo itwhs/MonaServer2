@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  buildx:
+  build:
     runs-on: ubuntu-latest
     permissions:
       packages: write
