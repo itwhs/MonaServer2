@@ -58,6 +58,6 @@ jobs:
           # 镜像推送时间
           push: ${{ github.event_name != 'pull_request' }}
           tags: |          # 给清单打上多个标签
-            ${{ secrets.DOCKER_USERNAME }}/MonaServer2:latest
-            ${{ secrets.DOCKER_USERNAME }}/MonaServer2:${{ github.ref_name }}
-            ${{ secrets.DOCKER_USERNAME }}/MonaServer2:${{ steps.date.outputs.today }}
+            ${{ secrets.DOCKER_USERNAME }}/monaserver2:latest
+            ${{ secrets.DOCKER_USERNAME }}/monaserver2:${{ github.ref_name }}
+            ${{ secrets.DOCKER_USERNAME }}/monaserver2:${{ steps.date.outputs.today }}
