@@ -5,8 +5,6 @@ FROM alpine:latest AS builder
 
 LABEL maintainer="itwhs<itwhs@foxmail.com>"
 
-ENV LUAJIT_VERSION 2.1.ROLLING
-
 # install prerequisites
 RUN apk add --no-cache libgcc \
 		libstdc++ \
@@ -20,9 +18,9 @@ RUN apk add --no-cache --virtual .build-deps \
 
 # Build & install luajit
 WORKDIR /usr/src
-RUN curl -fSL -o luajit.tar.gz https://github.com/LuaJIT/LuaJIT/archive/refs/tags/v$LUAJIT_VERSION.tar.gz \
+RUN curl -fSL -o luajit.tar.gz https://github.com/LuaJIT/LuaJIT/archive/refs/tags/v2.1.ROLLING.tar.gz \
 	&& tar -xzf luajit.tar.gz \
-	&& cd LuaJIT-$LUAJIT_VERSION \
+	&& cd LuaJIT-2.1.ROLLING \
 	&& sed -i 's/#XCFLAGS+= -DLUAJIT_ENABLE_LUA52COMPAT/XCFLAGS+= -DLUAJIT_ENABLE_LUA52COMPAT/g' src/Makefile \
 	&& make \
 	&& make install
